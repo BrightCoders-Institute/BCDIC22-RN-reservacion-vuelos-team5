@@ -1,0 +1,16 @@
+.expo/
+.vscode/.react
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+coverage/
+dist/
+node_modules/
+npm-debug.*
+web-build/
+
+# macOS
+.DS_Store
