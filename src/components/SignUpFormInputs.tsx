@@ -17,15 +17,15 @@ export default class SignUpFormInputs extends Component<ISignUpFormInputsProps> 
 					style={styles.input}
 					label='Name'
 					mode='outlined'
-					onChangeText={this.props.formikprops.handleChange('name')}
-					value={this.props.formikprops.values.name}
+					onChangeText={this.props.formikProps.handleChange('name')}
+					value={this.props.formikProps.values.name}
 					keyboardType='default'
 				/>
 				<TextInput
 					style={styles.input}
 					label='E-mail'
-					onChangeText={this.props.formikprops.handleChange('email')}
-					value={this.props.formikprops.values.email}
+					onChangeText={this.props.formikProps.handleChange('email')}
+					value={this.props.formikProps.values.email}
 					keyboardType='email-address'
 					mode='outlined'
 				/>
@@ -33,15 +33,15 @@ export default class SignUpFormInputs extends Component<ISignUpFormInputsProps> 
 					style={styles.input}
 					label='Password'
 					mode='outlined'
-					onChangeText={this.props.formikprops.handleChange('password')}
-					value={this.props.formikprops.values.password}
-					secureTextEntry={this.props.formikprops.values.hidden}
+					onChangeText={this.props.formikProps.handleChange('password')}
+					value={this.props.formikProps.values.password}
+					secureTextEntry={this.props.formikProps.values.hidden}
 					right={
 						<TextInput.Icon
-							icon={this.props.formikprops.values.hidden ? 'eye' : 'eye-off'}
+							icon={this.props.formikProps.values.hidden ? 'eye' : 'eye-off'}
 							onPress={() => {
-								this.props.formikprops.setFieldValue('hidden', !this.props.formikprops.values.hidden);
-								return !this.props.formikprops.values.hidden;
+								this.props.formikProps.setFieldValue('hidden', !this.props.formikProps.values.hidden);
+								return !this.props.formikProps.values.hidden;
 							}}
 						/>
 					}

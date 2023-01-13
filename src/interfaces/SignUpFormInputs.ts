@@ -1,16 +1,11 @@
+// Node modules
+import { FormikProps } from 'formik';
+
 export interface ISignUpFormInputsProps {
-	formikprops: {
-		handleChange: Function;
-		setFieldValue: (
-			field: string,
-			value: string | number | object | boolean,
-			shouldValidate?: boolean | undefined
-		) => void;
-		values: {
-			email: string;
-			password: string;
-			name: string;
-			hidden: boolean;
-		};
-	};
+	formikProps: FormikProps<{
+		name: string;
+		email: string;
+		password: string;
+		hidden: boolean;
+	}>;
 }

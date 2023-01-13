@@ -25,7 +25,7 @@ export default class SignUp extends Component<ISignUpProps> {
 							console.log(values);
 						}}
 					>
-						{(props) => <SignUpFormInputs formikprops={props} />}
+						{(formikProps) => <SignUpFormInputs formikProps={formikProps} />}
 					</Formik>
 				</View>
 			</ScrollView>
