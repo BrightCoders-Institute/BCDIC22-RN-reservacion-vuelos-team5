@@ -15,6 +15,7 @@ export default class SignUpFormInputs extends Component<ISignUpFormInputsProps> 
 			<View>
 				<TextInput
 					style={styles.input}
+					activeOutlineColor={styles.input.outlineColor}
 					label='Name'
 					mode='outlined'
 					onChangeText={this.props.formikProps.handleChange('name')}
@@ -23,6 +24,7 @@ export default class SignUpFormInputs extends Component<ISignUpFormInputsProps> 
 				/>
 				<TextInput
 					style={styles.input}
+					activeOutlineColor={styles.input.outlineColor}
 					label='E-mail'
 					onChangeText={this.props.formikProps.handleChange('email')}
 					value={this.props.formikProps.values.email}
@@ -31,6 +33,7 @@ export default class SignUpFormInputs extends Component<ISignUpFormInputsProps> 
 				/>
 				<TextInput
 					style={styles.input}
+					activeOutlineColor={styles.input.outlineColor}
 					label='Password'
 					mode='outlined'
 					onChangeText={this.props.formikProps.handleChange('password')}
@@ -54,5 +57,6 @@ export default class SignUpFormInputs extends Component<ISignUpFormInputsProps> 
 const styles = StyleSheet.create({
 	input: {
 		marginVertical: 10,
+		outlineColor: '#5C6EF8',
 	},
 });
