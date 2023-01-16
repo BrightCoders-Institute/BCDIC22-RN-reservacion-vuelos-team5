@@ -4,6 +4,7 @@ import { ScrollView, Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import { Formik } from 'formik';
 // Components
+import SignUpFormButton from '../components/SignUpFormButton';
 import SignUpFormInputs from '../components/SignUpFormInputs';
 // Interfaces
 import { ISignUpProps } from '../interfaces/SignUp';
@@ -25,7 +26,16 @@ export default class SignUp extends Component<ISignUpProps> {
 							console.log(values);
 						}}
 					>
-						{(formikProps) => <SignUpFormInputs formikProps={formikProps} />}
+						{(formikProps) => (
+							<View>
+								<SignUpFormInputs formikProps={formikProps} />
+								<View>
+									<SignUpFormButton disabled={true} isCommonLogging={true} text={'Sign Up'} />
+									<Text style={{ textAlign: 'center', marginVertical: 6 }}>or</Text>
+									<SignUpFormButton disabled={true} isCommonLogging={false} text={'Sign Up With Google'} />
+								</View>
+							</View>
+						)}
 					</Formik>
 				</View>
 			</ScrollView>
