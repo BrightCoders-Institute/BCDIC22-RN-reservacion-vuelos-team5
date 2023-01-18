@@ -5,8 +5,8 @@ export const NavigationContainerTheme = {
 	...DefaultTheme,
 	colors: {
 		...DefaultTheme.colors,
-		//primary: '#151525',
-		//secondary: '#151525',
+		primary: '#5C6EF8',
+		secondary: '#FFFFFF',
 		text: '#151525',
 		background: '#FFFFFF',
 		//border: '#FFFFFF',

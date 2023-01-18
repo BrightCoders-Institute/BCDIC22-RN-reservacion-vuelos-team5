@@ -1,9 +1,11 @@
 // Node modules
 import React, { Component } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Text } from 'react-native';
 import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 // Interfaces
 import { ISignUpFormButtonProps } from '../interfaces/SignUpFormButton';
+// Styles
+import Styles from '../styles/SignUp';
 
 export default class SignUpFormInputs extends Component<ISignUpFormButtonProps> {
 	constructor(props: ISignUpFormButtonProps) {
@@ -15,41 +17,30 @@ export default class SignUpFormInputs extends Component<ISignUpFormButtonProps> 
 			return (
 				<MaterialIcons.Button
 					name='email'
-					style={this.props.disabled ? styles.disabled : styles.enabled}
-					borderRadius={this.props.disabled ? styles.disabled.borderRadius : styles.enabled.borderRadius}
+					style={this.props.disabled ? Styles.formButton.buttonDisabled : Styles.formButton.buttonEnabled}
+					borderRadius={
+						this.props.disabled
+							? Styles.formButton.buttonDisabled.borderRadius
+							: Styles.formButton.buttonEnabled.borderRadius
+					}
 				>
-					<Text style={styles.title}>{this.props.text}</Text>
+					<Text style={Styles.formButton.text}>{this.props.text}</Text>
 				</MaterialIcons.Button>
 			);
 		} else {
 			return (
 				<FontAwesome.Button
 					name='google'
-					style={this.props.disabled ? styles.disabled : styles.enabled}
-					borderRadius={this.props.disabled ? styles.disabled.borderRadius : styles.enabled.borderRadius}
+					style={this.props.disabled ? Styles.formButton.buttonDisabled : Styles.formButton.buttonEnabled}
+					borderRadius={
+						this.props.disabled
+							? Styles.formButton.buttonDisabled.borderRadius
+							: Styles.formButton.buttonEnabled.borderRadius
+					}
 				>
-					<Text style={styles.title}>{this.props.text}</Text>
+					<Text style={Styles.formButton.text}>{this.props.text}</Text>
 				</FontAwesome.Button>
 			);
 		}
 	}
 }
-const styles = StyleSheet.create({
-	title: {
-		color: '#FFFFFF',
-		fontSize: 16,
-		fontWeight: '600',
-	},
-	enabled: {
-		padding: 10,
-		borderRadius: 10,
-		justifyContent: 'center',
-		backgroundColor: '#5C6EF8',
-	},
-	disabled: {
-		padding: 10,
-		borderRadius: 10,
-		justifyContent: 'center',
-		backgroundColor: '#B6B7BA',
-	},
-});
