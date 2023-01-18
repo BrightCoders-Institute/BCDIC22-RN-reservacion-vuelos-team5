@@ -1,7 +1,7 @@
 // Node modules
 import { FormikProps } from 'formik';
 
-export interface ISignUpFormInputsProps {
+export interface ISignUpFormCheckboxProps {
 	formikProps: FormikProps<{
 		agreed: boolean;
 		email: string;
@@ -10,4 +10,5 @@ export interface ISignUpFormInputsProps {
 		passwordHidden: boolean;
 		subscribe: boolean;
 	}>;
+	type: 'agreed' | 'subscribe';
 }

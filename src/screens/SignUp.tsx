@@ -1,13 +1,15 @@
 // Node modules
 import React, { Component } from 'react';
-import { ScrollView, Text, View, StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
+import { ScrollView, Text, View } from 'react-native';
 import { Formik } from 'formik';
 // Components
 import SignUpFormButton from '../components/SignUpFormButton';
+import SignUpFormCheckbox from '../components/SignUpFormCheckbox';
 import SignUpFormInputs from '../components/SignUpFormInputs';
 // Interfaces
 import { ISignUpProps } from '../interfaces/SignUp';
+// Styles
+import Styles from '../styles/SignUp';
 
 export default class SignUp extends Component<ISignUpProps> {
 	constructor(props: ISignUpProps) {
@@ -15,11 +17,18 @@ export default class SignUp extends Component<ISignUpProps> {
 	}
 
 	render() {
-		const initialValues = { name: '', email: '', password: '', hidden: true };
+		const initialValues = {
+			agreed: false,
+			email: '',
+			name: '',
+			password: '',
+			passwordHidden: true,
+			subscribe: false,
+		};
 		return (
-			<ScrollView style={{ marginTop: Constants.statusBarHeight }}>
-				<View style={{ margin: '4%' }}>
-					<Text style={styles.pageTitle}>Sign Up</Text>
+			<ScrollView style={Styles.screen.main}>
+				<View style={Styles.screen.container}>
+					<Text style={Styles.screen.title}>Sign Up</Text>
 					<Formik
 						initialValues={initialValues}
 						onSubmit={(values) => {
@@ -28,11 +37,17 @@ export default class SignUp extends Component<ISignUpProps> {
 					>
 						{(formikProps) => (
 							<View>
-								<SignUpFormInputs formikProps={formikProps} />
-								<View>
-									<SignUpFormButton disabled={true} isCommonLogging={true} text={'Sign Up'} />
-									<Text style={{ textAlign: 'center', marginVertical: 6 }}>or</Text>
-									<SignUpFormButton disabled={true} isCommonLogging={false} text={'Sign Up With Google'} />
+								<View style={Styles.screen.space}>
+									<SignUpFormInputs formikProps={formikProps} />
+								</View>
+								<View style={Styles.screen.space}>
+									<SignUpFormCheckbox formikProps={formikProps} type={'agreed'} />
+									<SignUpFormCheckbox formikProps={formikProps} type={'subscribe'} />
+								</View>
+								<View style={Styles.screen.space}>
+									<SignUpFormButton disabled={false} isCommonLogging={true} text={'Sign Up'} />
+									<Text style={Styles.screen.textSeparator}>or</Text>
+									<SignUpFormButton disabled={false} isCommonLogging={false} text={'Sign Up With Google'} />
 								</View>
 							</View>
 						)}
@@ -42,12 +57,3 @@ export default class SignUp extends Component<ISignUpProps> {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	pageTitle: {
-		color: '#5C6EF8',
-		fontSize: 22,
-		fontWeight: 'bold',
-		marginVertical: 10,
-	},
-});
