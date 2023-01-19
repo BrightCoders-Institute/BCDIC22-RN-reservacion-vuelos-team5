@@ -1,5 +1,5 @@
 export interface ISignUpFormButtonProps {
-	disabled: boolean;
-	isCommonLogging: boolean;
-	text: string;
+  disabled: boolean;
+  isCommonLogging: boolean;
+  text: string;
 }
