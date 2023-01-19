@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { Formik } from 'formik';
 // Components
+import LogInFormButton from '../components/LogInFormButton';
 import LogInFormInputs from '../components/LogInFormInputs';
 // Interfaces
 import { ILogInProps } from '../interfaces/LogIn';
@@ -34,6 +35,11 @@ export default class LogIn extends Component<ILogInProps> {
               <View>
                 <View style={Styles.screen.space}>
                   <LogInFormInputs formikProps={formikProps} />
+                </View>
+                <View style={Styles.screen.space}>
+                  <LogInFormButton disabled={false} isCommonLogging={true} text={'Log In'} />
+                  <Text style={Styles.screen.textSeparator}>or</Text>
+                  <LogInFormButton disabled={false} isCommonLogging={false} text={'Log In With Google'} />
                 </View>
               </View>
             )}
