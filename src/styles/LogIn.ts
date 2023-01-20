@@ -23,21 +23,6 @@ export const formButton = StyleSheet.create({
     backgroundColor: '#B6B7BA',
   },
 });
-export const formCheckbox = StyleSheet.create({
-  checkbox: {
-    color: NavigationContainerTheme.colors.primary,
-  },
-  main: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  textLink: {
-    textDecorationLine: 'underline',
-  },
-  required: {
-    color: 'red',
-  },
-});
 export const formInputs = StyleSheet.create({
   input: {
     marginVertical: 10,
@@ -69,7 +54,6 @@ export const screen = StyleSheet.create({
 
 export default {
   formButton,
-  formCheckbox,
   formInputs,
   screen,
 };

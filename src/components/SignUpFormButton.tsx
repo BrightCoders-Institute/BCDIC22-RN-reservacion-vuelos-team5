@@ -8,39 +8,39 @@ import { ISignUpFormButtonProps } from '../interfaces/SignUpFormButton';
 import Styles from '../styles/SignUp';
 
 export default class SignUpFormInputs extends Component<ISignUpFormButtonProps> {
-	constructor(props: ISignUpFormButtonProps) {
-		super(props);
-	}
+  constructor(props: ISignUpFormButtonProps) {
+    super(props);
+  }
 
-	render() {
-		if (this.props.isCommonLogging) {
-			return (
-				<MaterialIcons.Button
-					name='email'
-					style={this.props.disabled ? Styles.formButton.buttonDisabled : Styles.formButton.buttonEnabled}
-					borderRadius={
-						this.props.disabled
-							? Styles.formButton.buttonDisabled.borderRadius
-							: Styles.formButton.buttonEnabled.borderRadius
-					}
-				>
-					<Text style={Styles.formButton.text}>{this.props.text}</Text>
-				</MaterialIcons.Button>
-			);
-		} else {
-			return (
-				<FontAwesome.Button
-					name='google'
-					style={this.props.disabled ? Styles.formButton.buttonDisabled : Styles.formButton.buttonEnabled}
-					borderRadius={
-						this.props.disabled
-							? Styles.formButton.buttonDisabled.borderRadius
-							: Styles.formButton.buttonEnabled.borderRadius
-					}
-				>
-					<Text style={Styles.formButton.text}>{this.props.text}</Text>
-				</FontAwesome.Button>
-			);
-		}
-	}
+  render() {
+    if (this.props.isCommonLogging) {
+      return (
+        <MaterialIcons.Button
+          name='email'
+          style={this.props.disabled ? Styles.formButton.buttonDisabled : Styles.formButton.buttonEnabled}
+          borderRadius={
+            this.props.disabled
+              ? Styles.formButton.buttonDisabled.borderRadius
+              : Styles.formButton.buttonEnabled.borderRadius
+          }
+        >
+          <Text style={Styles.formButton.text}>{this.props.text}</Text>
+        </MaterialIcons.Button>
+      );
+    } else {
+      return (
+        <FontAwesome.Button
+          name='google'
+          style={this.props.disabled ? Styles.formButton.buttonDisabled : Styles.formButton.buttonEnabled}
+          borderRadius={
+            this.props.disabled
+              ? Styles.formButton.buttonDisabled.borderRadius
+              : Styles.formButton.buttonEnabled.borderRadius
+          }
+        >
+          <Text style={Styles.formButton.text}>{this.props.text}</Text>
+        </FontAwesome.Button>
+      );
+    }
+  }
 }

@@ -1,14 +1,14 @@
 // Node modules
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { TextInput } from 'react-native-paper';
 // Interfaces
-import { ISignUpFormInputsProps } from '../interfaces/SignUpFormInputs';
+import { ILogInFormInputsProps } from '../interfaces/LogInFormInputs';
 // Styles
-import Styles from '../styles/SignUp';
+import Styles from '../styles/LogIn';
 
-export default class SignUpFormInputs extends Component<ISignUpFormInputsProps> {
-  constructor(props: ISignUpFormInputsProps) {
+export default class LogInFormInputs extends Component<ILogInFormInputsProps> {
+  constructor(props: ILogInFormInputsProps) {
     super(props);
   }
 
@@ -18,16 +18,7 @@ export default class SignUpFormInputs extends Component<ISignUpFormInputsProps> 
         <TextInput
           style={Styles.formInputs.input}
           activeOutlineColor={Styles.formInputs.input.outlineColor}
-          label='Name'
-          mode={Styles.formInputs.input.mode}
-          onChangeText={this.props.formikProps.handleChange('name')}
-          value={this.props.formikProps.values.name}
-          keyboardType='default'
-        />
-        <TextInput
-          style={Styles.formInputs.input}
-          activeOutlineColor={Styles.formInputs.input.outlineColor}
-          label='E-mail *'
+          label='E-mail'
           mode={Styles.formInputs.input.mode}
           onChangeText={this.props.formikProps.handleChange('email')}
           value={this.props.formikProps.values.email}
@@ -36,7 +27,7 @@ export default class SignUpFormInputs extends Component<ISignUpFormInputsProps> 
         <TextInput
           style={Styles.formInputs.input}
           activeOutlineColor={Styles.formInputs.input.outlineColor}
-          label='Password *'
+          label='Password'
           mode={Styles.formInputs.input.mode}
           onChangeText={this.props.formikProps.handleChange('password')}
           value={this.props.formikProps.values.password}
@@ -51,7 +42,6 @@ export default class SignUpFormInputs extends Component<ISignUpFormInputsProps> 
             />
           }
         />
-        <Text>Use 8 or more characters with a mix of letters, numbers, and symbols</Text>
       </View>
     );
   }
