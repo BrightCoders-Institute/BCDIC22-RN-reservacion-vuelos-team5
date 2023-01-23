@@ -52,6 +52,17 @@ export default class SignUp extends Component<ISignUpProps> {
               </View>
             )}
           </Formik>
+          <Text style={Styles.screen.textCentered}>
+            Already have an account?{' '}
+            <Text
+              style={[Styles.screen.textLink, Styles.screen.textLinkColor]}
+              onPress={() => {
+                this.props.navigation.navigate('LogIn');
+              }}
+            >
+              Log In
+            </Text>
+          </Text>
         </View>
       </ScrollView>
     );
