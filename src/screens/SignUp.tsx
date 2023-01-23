@@ -26,7 +26,7 @@ export default class SignUp extends Component<ISignUpProps> {
       subscribe: false,
     };
     return (
-      <ScrollView style={Styles.screen.main}>
+      <ScrollView testID='screenSignUp' style={Styles.screen.main}>
         <View style={Styles.screen.container}>
           <Text style={Styles.screen.title}>Sign Up</Text>
           <Formik
@@ -55,6 +55,7 @@ export default class SignUp extends Component<ISignUpProps> {
           <Text style={Styles.screen.textCentered}>
             Already have an account?{' '}
             <Text
+              testID='linkLogIn'
               style={[Styles.screen.textLink, Styles.screen.textLinkColor]}
               onPress={() => {
                 this.props.navigation.navigate('LogIn');
