@@ -46,6 +46,15 @@ export const screen = StyleSheet.create({
     fontWeight: 'bold',
     marginVertical: 10,
   },
+  textCentered: {
+    textAlign: 'center',
+  },
+  textLink: {
+    textDecorationLine: 'underline',
+  },
+  textLinkColor: {
+    color: NavigationContainerTheme.colors.primary,
+  },
   textSeparator: {
     textAlign: 'center',
     marginVertical: 10,
