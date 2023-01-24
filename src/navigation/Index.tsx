@@ -9,6 +9,7 @@ import { RootStackParamList } from '../interfaces/RootStackParamList';
 // Screens
 import LogIn from '../screens/LogIn';
 import SignUp from '../screens/SignUp';
+import MyFlights from '../screens/MyFlights';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -30,6 +31,12 @@ export default class Navigation extends Component {
           <Stack.Screen
             name='LogIn'
             component={LogIn}
+            options={HomeStackScreenTheme}
+            initialParams={{ data: undefined }}
+          />
+          <Stack.Screen
+            name='MyFlights'
+            component={MyFlights}
             options={HomeStackScreenTheme}
             initialParams={{ data: undefined }}
           />
