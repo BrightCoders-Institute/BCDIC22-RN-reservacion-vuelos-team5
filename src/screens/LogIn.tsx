@@ -22,7 +22,7 @@ export default class LogIn extends Component<ILogInProps> {
       passwordHidden: true,
     };
     return (
-      <ScrollView style={Styles.screen.main}>
+      <ScrollView testID='screenLogIn' style={Styles.screen.main}>
         <View style={Styles.screen.container}>
           <Text style={Styles.screen.title}>Log In</Text>
           <Formik
@@ -47,6 +47,7 @@ export default class LogIn extends Component<ILogInProps> {
           <Text style={Styles.screen.textCentered}>
             Don't have an account?{' '}
             <Text
+              testID='linkSignUp'
               style={[Styles.screen.textLink, Styles.screen.textLinkColor]}
               onPress={() => {
                 this.props.navigation.navigate('SignUp');
