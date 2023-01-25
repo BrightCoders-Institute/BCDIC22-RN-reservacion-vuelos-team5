@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export const flights = StyleSheet.create({
+export const ButtonAdd = StyleSheet.create({
   add: {
     backgroundColor: '#5856D6',
     width: 65,
@@ -18,9 +18,9 @@ export const flights = StyleSheet.create({
     elevation: 10,
   },
   addLocation: {
-    position: 'relative',
+    position: 'absolute',
+    alignSelf: 'center',
     bottom: 15,
-    alignItems: 'center',
   },
   addIcon: {
     color: 'white',
@@ -30,6 +30,44 @@ export const flights = StyleSheet.create({
   },
 });
 
+const flights = StyleSheet.create({
+  header: {
+    borderWidth: 0,
+  },
+  container: {
+    marginTop: 20,
+  },
+  text: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    marginLeft: 10,
+    marginRight: 10,
+  },
+
+  Table: {
+    justifyContent: 'flex-end',
+  },
+
+  airplane: {
+    position: 'relative',
+    alignSelf: 'center',
+    /* right: '50%', */
+  },
+  textCountry: {
+    fontSize: 15,
+  },
+  textInfo: {
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+  textShort: {
+    fontSize: 25,
+    color: 'black',
+    fontWeight: 'bold',
+  },
+});
+
 export default {
+  ButtonAdd,
   flights,
 };
