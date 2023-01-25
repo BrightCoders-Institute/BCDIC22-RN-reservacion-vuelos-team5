@@ -21,7 +21,7 @@ export default class Navigation extends Component {
   render() {
     return (
       <NavigationContainer theme={NavigationContainerTheme}>
-        <Stack.Navigator initialRouteName='SignUp'>
+        <Stack.Navigator initialRouteName='MyFlights'>
           <Stack.Screen
             name='SignUp'
             component={SignUp}
