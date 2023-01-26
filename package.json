@@ -1,5 +1,5 @@
 {
-  "name": "reservacion-vuelos",
+  "name": "reservacion-vuelos-team5",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -12,10 +12,13 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.2",
+    "@react-native-async-storage/async-storage": "^1.17.11",
     "@react-navigation/native": "^6.1.2",
     "@react-navigation/native-stack": "^6.9.8",
+    "dotenv": "^16.0.3",
     "expo": "~47.0.12",
     "expo-status-bar": "~1.4.2",
+    "firebase": "^9.16.0",
     "formik": "^2.2.9",
     "react": "18.1.0",
     "react-dom": "18.1.0",

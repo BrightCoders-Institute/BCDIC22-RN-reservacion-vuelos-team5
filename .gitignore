@@ -1,3 +1,4 @@
+.env
 .expo/
 .vscode/.react
 *.jks
