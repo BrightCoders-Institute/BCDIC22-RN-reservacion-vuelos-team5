@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export const ButtonAdd = StyleSheet.create({
+export const buttonAdd = StyleSheet.create({
   add: {
     backgroundColor: '#5856D6',
     width: 65,
@@ -30,7 +30,7 @@ export const ButtonAdd = StyleSheet.create({
   },
 });
 
-const flights = StyleSheet.create({
+const cards = StyleSheet.create({
   header: {
     borderWidth: 0,
   },
@@ -68,6 +68,6 @@ const flights = StyleSheet.create({
 });
 
 export default {
-  ButtonAdd,
-  flights,
+  buttonAdd,
+  cards,
 };
