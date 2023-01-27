@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
+import { NavigationContainerTheme } from '../constants/themes';
 
 export const buttonAdd = StyleSheet.create({
   add: {
@@ -66,6 +67,13 @@ const cards = StyleSheet.create({
     color: 'black',
     fontWeight: 'bold',
   },
+  divider: {
+    backgroundColor: 'black',
+    height: 1,
+  },
+  plane: {
+    color: NavigationContainerTheme.colors.primary,
+  },
 });
 
 const screen = StyleSheet.create({
@@ -73,7 +81,7 @@ const screen = StyleSheet.create({
     fontSize: 20,
     top: Constants.statusBarHeight,
     fontWeight: 'bold',
-    color: '#6170f7',
+    color: NavigationContainerTheme.colors.primary,
     marginTop: 20,
     marginLeft: 20,
   },
