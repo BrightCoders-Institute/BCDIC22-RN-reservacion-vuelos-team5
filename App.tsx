@@ -1,5 +1,6 @@
 // Node modules
 import React, { Component } from 'react';
+import BookingCalendar from './src/components/BookingCalendar';
 import Navigation from './src/navigation/Index';
 
 export default class App extends Component {
@@ -8,6 +9,6 @@ export default class App extends Component {
   }
 
   render() {
-    return <Navigation />;
+    return <BookingCalendar />;
   }
 }
