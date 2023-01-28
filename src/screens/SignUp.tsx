@@ -1,14 +1,13 @@
 // Node modules
 import React, { Component } from 'react';
 import { Alert, ScrollView, Text, View } from 'react-native';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth/react-native';
 import { Formik } from 'formik';
 // Components
 import SignUpFormButton from '../components/SignUpFormButton';
 import SignUpFormCheckbox from '../components/SignUpFormCheckbox';
 import SignUpFormInputs from '../components/SignUpFormInputs';
 // Firebase
-import { auth } from '../firebase/firebaseConfig';
+import { auth, GoogleSignin } from '../firebase/firebaseConfig';
 // Interfaces
 import { ISignUpProps, ISignUpState, ISignUpFormikProps } from '../interfaces/SignUp';
 // Styles
@@ -52,6 +51,44 @@ export default class SignUp extends Component<ISignUpProps, ISignUpState> {
     );
   };
 
+  onEmailSignUp = async (formikProps: ISignUpFormikProps) => {
+    try {
+      await auth().createUserWithEmailAndPassword(
+        formikProps.values.inputs.email.value,
+        formikProps.values.inputs.password.value
+      );
+      await auth().currentUser?.updateProfile({
+        displayName: formikProps.values.inputs.name.value,
+      });
+      this.props.navigation.navigate('MyFlights');
+      formikProps.handleSubmit();
+    } catch (error) {
+      if (error instanceof Error) {
+        Alert.alert('Error', error.message);
+      } else {
+        console.error(error);
+      }
+    }
+  };
+
+  onGoogleSignUp = async (formikProps: ISignUpFormikProps) => {
+    try {
+      await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+      const idToken = (await GoogleSignin.signIn()).idToken;
+      const credential = auth.GoogleAuthProvider.credential(idToken);
+      await auth().signInWithCredential(credential);
+      console.log(auth().currentUser);
+      this.props.navigation.navigate('MyFlights');
+      formikProps.handleSubmit();
+    } catch (error) {
+      if (error instanceof Error) {
+        Alert.alert('Error', error.message);
+      } else {
+        console.error(error);
+      }
+    }
+  };
+
   render() {
     return (
       <ScrollView testID='screenSignUp' style={Styles.screen.main}>
@@ -59,17 +96,8 @@ export default class SignUp extends Component<ISignUpProps, ISignUpState> {
           <Text style={Styles.screen.title}>Sign Up</Text>
           <Formik
             initialValues={this.state}
-            onSubmit={(values) => {
-              createUserWithEmailAndPassword(auth, values.inputs.email.value, values.inputs.password.value)
-                .then(async (userCredential) => {
-                  await updateProfile(userCredential.user, {
-                    displayName: values.inputs.name.value,
-                  });
-                  this.props.navigation.navigate('MyFlights');
-                })
-                .catch((error) => {
-                  Alert.alert('Error', error.message);
-                });
+            onSubmit={async (values, formikHelpers) => {
+              formikHelpers.resetForm();
             }}
           >
             {(formikProps) => (
@@ -86,12 +114,15 @@ export default class SignUp extends Component<ISignUpProps, ISignUpState> {
                     disabled={!this.isFormValid(formikProps)}
                     isCommonLogging={true}
                     text={'Sign Up'}
-                    onPress={() => {
-                      formikProps.handleSubmit();
-                    }}
+                    onPress={async () => await this.onEmailSignUp(formikProps)}
                   />
                   <Text style={Styles.screen.textSeparator}>or</Text>
-                  <SignUpFormButton disabled={false} isCommonLogging={false} text={'Sign Up With Google'} />
+                  <SignUpFormButton
+                    disabled={false}
+                    isCommonLogging={false}
+                    text={'Sign Up With Google'}
+                    onPress={async () => await this.onGoogleSignUp(formikProps)}
+                  />
                 </View>
                 <Text style={Styles.screen.textCentered}>
                   Already have an account?{' '}

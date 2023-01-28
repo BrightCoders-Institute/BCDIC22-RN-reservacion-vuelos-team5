@@ -5,7 +5,6 @@ import { TextInput } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 // Firebase
 import { auth } from '../firebase/firebaseConfig';
-import { fetchSignInMethodsForEmail } from 'firebase/auth/react-native';
 // Interfaces
 import { ISignUpFormInputsProps } from '../interfaces/SignUpFormInputs';
 // Styles
@@ -15,18 +14,14 @@ export default class SignUpFormInputs extends Component<ISignUpFormInputsProps> 
   constructor(props: ISignUpFormInputsProps) {
     super(props);
   }
-  onEmailChange = (email: string) => {
-    fetchSignInMethodsForEmail(auth, email)
-      .then((signInMethods) => {
-        const validRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-        this.props.formikProps.setFieldValue(
-          'inputs.email.error',
-          signInMethods.length > 0 || !email.match(validRegex)
-        );
-      })
-      .catch(() => {
-        this.props.formikProps.setFieldValue('inputs.email.error', true);
-      });
+  onEmailChange = async (email: string) => {
+    try {
+      const signInMethods = await auth().fetchSignInMethodsForEmail(email);
+      const validRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+      this.props.formikProps.setFieldValue('inputs.email.error', signInMethods.length > 0 || !email.match(validRegex));
+    } catch (error) {
+      this.props.formikProps.setFieldValue('inputs.email.error', true);
+    }
   };
 
   onPasswordChange = (password: string) => {

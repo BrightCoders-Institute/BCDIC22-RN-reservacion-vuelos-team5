@@ -124,7 +124,11 @@ export default {
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
 
-  setupFiles: ['./jest/setup.ts'],
+  setupFiles: [
+    './jest/setup.ts',
+    './node_modules/react-native-gesture-handler/jestSetup.js',
+    './node_modules/@react-native-google-signin/google-signin/jest/build/setup.js',
+  ],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   //setupFilesAfterEnv: ['./jest/setupAfterEnv.ts'],
