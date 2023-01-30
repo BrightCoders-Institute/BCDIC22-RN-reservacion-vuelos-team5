@@ -1,12 +1,10 @@
+// Node modules
 import Constants from 'expo-constants';
-import { FirebaseOptions, initializeApp } from 'firebase/app';
-import { initializeAuth, getReactNativePersistence } from 'firebase/auth/react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
-const firebaseConfig: FirebaseOptions = Constants.expoConfig?.extra?.firebase;
-
-export const app = initializeApp(firebaseConfig);
-
-export const auth = initializeAuth(app, {
-  persistence: getReactNativePersistence(AsyncStorage),
+GoogleSignin.configure({
+  webClientId: Constants.expoConfig?.extra?.googleServices.client[0].oauth_client[2].client_id,
 });
+
+export { auth, GoogleSignin };
