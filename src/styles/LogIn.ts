@@ -1,6 +1,9 @@
 // Node modules
+import { ComponentProps } from 'react';
 import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { TextInput } from 'react-native-paper';
 // Constants
 import { NavigationContainerTheme } from '../constants/themes';
 
@@ -14,7 +17,7 @@ export const formButton = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     justifyContent: 'center',
-    backgroundColor: '#5C6EF8',
+    backgroundColor: NavigationContainerTheme.colors.primary,
   },
   buttonDisabled: {
     padding: 10,
@@ -23,13 +26,29 @@ export const formButton = StyleSheet.create({
     backgroundColor: '#B6B7BA',
   },
 });
+
 export const formInputs = StyleSheet.create({
   input: {
     marginVertical: 10,
     outlineColor: NavigationContainerTheme.colors.primary,
-    mode: 'outlined' as 'outlined' | 'flat' | undefined,
+    mode: 'outlined' as ComponentProps<typeof TextInput>['mode'],
+  },
+  helper: {
+    flexDirection: 'row',
+  },
+  helperIcon: {
+    name: 'alert-circle' as keyof typeof MaterialCommunityIcons.glyphMap,
+    textAlignVertical: 'center',
+    size: 20,
+    color: 'red',
+  },
+  helperText: {
+    color: 'red',
+    textAlignVertical: 'center',
+    flexShrink: 1,
   },
 });
+
 export const screen = StyleSheet.create({
   main: {
     marginTop: Constants.statusBarHeight,
