@@ -14,6 +14,7 @@ export default class SignUpFormInputs extends Component<ISignUpFormInputsProps> 
   constructor(props: ISignUpFormInputsProps) {
     super(props);
   }
+
   onEmailChange = async (email: string) => {
     try {
       const signInMethods = await auth().fetchSignInMethodsForEmail(email);
@@ -59,17 +60,14 @@ export default class SignUpFormInputs extends Component<ISignUpFormInputsProps> 
           keyboardType='email-address'
         />
         {this.props.formikProps.values.inputs.email.error && (
-          <View style={{ flexDirection: 'row' }}>
-            <MaterialCommunityIcons name='alert-circle' size={20} color='red' style={{ textAlignVertical: 'center' }} />
-            <Text
-              style={{
-                color: 'red',
-                textAlignVertical: 'center',
-                flexShrink: 1,
-              }}
-            >
-              Email address is invalid or already used
-            </Text>
+          <View style={Styles.formInputs.helper}>
+            <MaterialCommunityIcons
+              name={Styles.formInputs.helperIcon.name}
+              style={Styles.formInputs.helperIcon}
+              size={Styles.formInputs.helperIcon.size}
+              color={Styles.formInputs.helperIcon.color}
+            />
+            <Text style={Styles.formInputs.helperText}>Email address is invalid or already used</Text>
           </View>
         )}
         <TextInput
@@ -97,15 +95,21 @@ export default class SignUpFormInputs extends Component<ISignUpFormInputsProps> 
             />
           }
         />
-        <View style={{ flexDirection: 'row' }}>
+        <View style={Styles.formInputs.helper}>
           {this.props.formikProps.values.inputs.password.error && (
-            <MaterialCommunityIcons name='alert-circle' size={20} color='red' style={{ textAlignVertical: 'center' }} />
+            <MaterialCommunityIcons
+              name={Styles.formInputs.helperIcon.name}
+              size={Styles.formInputs.helperIcon.size}
+              color={Styles.formInputs.helperIcon.color}
+              style={Styles.formInputs.helperIcon}
+            />
           )}
           <Text
             style={{
-              color: this.props.formikProps.values.inputs.password.error ? 'red' : undefined,
-              textAlignVertical: 'center',
-              flexShrink: 1,
+              ...Styles.formInputs.helperText,
+              color: this.props.formikProps.values.inputs.password.error
+                ? Styles.formInputs.helperText.color
+                : undefined,
             }}
           >
             Use 8 or more characters with a mix of letters, numbers, and symbols

@@ -9,7 +9,7 @@ import SignUpFormInputs from '../components/SignUpFormInputs';
 // Firebase
 import { auth, GoogleSignin } from '../firebase/firebaseConfig';
 // Interfaces
-import { ISignUpProps, ISignUpState, ISignUpFormikProps } from '../interfaces/SignUp';
+import { ISignUpFormikProps, ISignUpProps, ISignUpState } from '../interfaces/SignUp';
 // Styles
 import Styles from '../styles/SignUp';
 
@@ -77,7 +77,6 @@ export default class SignUp extends Component<ISignUpProps, ISignUpState> {
       const idToken = (await GoogleSignin.signIn()).idToken;
       const credential = auth.GoogleAuthProvider.credential(idToken);
       await auth().signInWithCredential(credential);
-      console.log(auth().currentUser);
       this.props.navigation.navigate('MyFlights');
       formikProps.handleSubmit();
     } catch (error) {
