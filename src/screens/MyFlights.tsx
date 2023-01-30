@@ -1,7 +1,6 @@
 // Node modules
 import React, { Component } from 'react';
-import { ScrollView, View } from 'react-native';
-import Constants from 'expo-constants';
+import { ScrollView, View, Text } from 'react-native';
 
 // Components
 import MyFlightsCard from '../components/MyFlightsCard';
@@ -9,6 +8,8 @@ import MyFlightsButtonAdd from '../components/MyFlightsButtonAdd';
 
 // Interfaces
 import { IMyFlightsProps } from '../interfaces/MyFlights';
+// Styles
+import Styles from '../styles/MyFlights';
 
 export default class LogIn extends Component<IMyFlightsProps> {
   constructor(props: IMyFlightsProps) {
@@ -17,8 +18,9 @@ export default class LogIn extends Component<IMyFlightsProps> {
 
   render() {
     return (
-      <View style={{ height: '100%' }}>
-        <ScrollView style={{ marginTop: Constants.statusBarHeight, paddingLeft: 20, paddingRight: 20 }}>
+      <View style={Styles.screen.container}>
+        <Text style={Styles.screen.text}>My Flights</Text>
+        <ScrollView style={Styles.screen.scroll}>
           <MyFlightsCard />
         </ScrollView>
         <MyFlightsButtonAdd />
