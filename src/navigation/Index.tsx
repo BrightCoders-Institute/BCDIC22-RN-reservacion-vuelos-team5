@@ -10,6 +10,7 @@ import { RootStackParamList } from '../interfaces/RootStackParamList';
 import LogIn from '../screens/LogIn';
 import SignUp from '../screens/SignUp';
 import MyFlights from '../screens/MyFlights';
+import Booking from '../screens/Booking';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -21,7 +22,7 @@ export default class Navigation extends Component {
   render() {
     return (
       <NavigationContainer theme={NavigationContainerTheme}>
-        <Stack.Navigator initialRouteName='SignUp'>
+        <Stack.Navigator initialRouteName='Booking'>
           <Stack.Screen
             name='SignUp'
             component={SignUp}
@@ -37,6 +38,12 @@ export default class Navigation extends Component {
           <Stack.Screen
             name='MyFlights'
             component={MyFlights}
+            options={HomeStackScreenTheme}
+            initialParams={{ data: undefined }}
+          />
+          <Stack.Screen
+            name='Booking'
+            component={Booking}
             options={HomeStackScreenTheme}
             initialParams={{ data: undefined }}
           />
