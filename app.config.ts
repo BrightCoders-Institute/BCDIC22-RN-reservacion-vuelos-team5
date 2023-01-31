@@ -18,29 +18,90 @@ export default {
     },
     assetBundlePatterns: ['**/*'],
     ios: {
+      // googleServicesFile: './GoogleService-Info.plist',
       supportsTablet: true,
+      bundleIdentifier: 'com.brightcoders.reservacion_vuelos_team5',
     },
-    android: {
-      adaptiveIcon: {
-        foregroundImage: './src/assets/adaptive-icon.png',
-        backgroundColor: '#FFFFFF',
-      },
+    get android() {
+      return {
+        googleServicesFile: (() => {
+          return this.extra.googleServices;
+        })(),
+        adaptiveIcon: {
+          foregroundImage: './src/assets/adaptive-icon.png',
+          backgroundColor: '#FFFFFF',
+        },
+        package: 'com.brightcoders.reservacion_vuelos_team5',
+      };
     },
     web: {
       favicon: './src/assets/favicon.png',
     },
     sdkVersion: '47.0.0',
+    plugins: ['@react-native-firebase/app', '@react-native-firebase/auth', '@react-native-google-signin/google-signin'],
     extra: {
-      firebase: {
-        apiKey: process.env.FIREBASE_API_KEY,
-        authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-        projectId: process.env.FIREBASE_PROJECT_ID,
-        storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-        messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-        appId: process.env.FIREBASE_APP_ID,
-        measurementId: process.env.FIREBASE_MEASUREMENT_ID,
+      eas: {
+        projectId: '14ebe608-ea10-4f68-bff0-fc60a64662e0',
+      },
+      googleServices: {
+        project_info: {
+          project_number: process.env.FIREBASE_PROJECT_INFO_PROJECT_NUMBER,
+          project_id: process.env.FIREBASE_PROJECT_INFO_PROJECT_ID,
+          storage_bucket: process.env.FIREBASE_PROJECT_INFO_STORAGE_BUCKET,
+        },
+        client: [
+          {
+            client_info: {
+              mobilesdk_app_id: process.env.FIREBASE_CLIENT_CLIENT_INFO_MOBILESDK_APP_ID,
+              android_client_info: {
+                package_name: process.env.FIREBASE_CLIENT_CLIENT_INFO_ANDROID_CLIENT_INFO_PACKAGE_NAME,
+              },
+            },
+            oauth_client: [
+              {
+                client_id: process.env.FIREBASE_CLIENT_OAUTH_1_CLIENT_CLIENT_ID,
+                client_type: Number(process.env.FIREBASE_CLIENT_OAUTH_1_CLIENT_CLIENT_TYPE),
+                android_info: {
+                  package_name: process.env.FIREBASE_CLIENT_OAUTH_1_CLIENT_ANDROID_INFO_PACKAGE_NAME,
+                  certificate_hash: process.env.FIREBASE_CLIENT_OAUTH_1_CLIENT_ANDROID_INFO_CERTIFICATE_HASH,
+                },
+              },
+              {
+                client_id: process.env.FIREBASE_CLIENT_OAUTH_2_CLIENT_CLIENT_ID,
+                client_type: Number(process.env.FIREBASE_CLIENT_OAUTH_2_CLIENT_CLIENT_TYPE),
+                android_info: {
+                  package_name: process.env.FIREBASE_CLIENT_OAUTH_2_CLIENT_ANDROID_INFO_PACKAGE_NAME,
+                  certificate_hash: process.env.FIREBASE_CLIENT_OAUTH_2_CLIENT_ANDROID_INFO_CERTIFICATE_HASH,
+                },
+              },
+              {
+                client_id: process.env.FIREBASE_CLIENT_OAUTH_3_CLIENT_CLIENT_ID,
+                client_type: Number(process.env.FIREBASE_CLIENT_OAUTH_3_CLIENT_CLIENT_TYPE),
+              },
+            ],
+            api_key: [
+              {
+                current_key: process.env.FIREBASE_CLIENT_API_KEY_CURRENT_KEY,
+              },
+            ],
+            services: {
+              appinvite_service: {
+                other_platform_oauth_client: [
+                  {
+                    client_id:
+                      process.env.FIREBASE_CLIENT_SERVICES_APPINVITE_SERVICE_OTHER_PLATFORM_OAUTH_CLIENT_CLIENT_ID,
+                    client_type:
+                      process.env.FIREBASE_CLIENT_SERVICES_APPINVITE_SERVICE_OTHER_PLATFORM_OAUTH_CLIENT_CLIENT_TYPE,
+                  },
+                ],
+              },
+            },
+          },
+        ],
+        configuration_version: Number(process.env.FIREBASE_CONFIGURATION_VERSION),
       },
     },
+    owner: 'brightcoders',
   },
   name: 'reservacion-vuelos-team5',
 };

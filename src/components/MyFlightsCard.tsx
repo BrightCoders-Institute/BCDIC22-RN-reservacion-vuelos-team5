@@ -11,7 +11,7 @@ export default class MyFlightsCardFlight extends Component {
         <DataTable>
           <DataTable.Header style={Styles.cards.header}>
             <DataTable.Title textStyle={Styles.cards.textShort}>BEG</DataTable.Title>
-            <Ionicons name='airplane-sharp' size={30} color='#6170f7' />
+            <Ionicons name='airplane-sharp' size={30} color={Styles.cards.plane.color} />
             <DataTable.Title textStyle={Styles.cards.textShort} style={Styles.cards.Table}>
               AMS
             </DataTable.Title>
@@ -28,7 +28,7 @@ export default class MyFlightsCardFlight extends Component {
               2 passengers
             </DataTable.Cell>
           </DataTable.Header>
-          <Divider style={{ backgroundColor: 'black', height: 1 }} />
+          <Divider style={Styles.cards.divider} />
         </DataTable>
       </View>
     );

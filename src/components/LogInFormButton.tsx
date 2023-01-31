@@ -23,6 +23,7 @@ export default class LogInFormInputs extends Component<ILogInFormButtonProps> {
               ? Styles.formButton.buttonDisabled.borderRadius
               : Styles.formButton.buttonEnabled.borderRadius
           }
+          onPress={this.props.onPress && !this.props.disabled ? this.props.onPress : undefined}
         >
           <Text style={Styles.formButton.text}>{this.props.text}</Text>
         </MaterialIcons.Button>
@@ -37,6 +38,7 @@ export default class LogInFormInputs extends Component<ILogInFormButtonProps> {
               ? Styles.formButton.buttonDisabled.borderRadius
               : Styles.formButton.buttonEnabled.borderRadius
           }
+          onPress={this.props.onPress && !this.props.disabled ? this.props.onPress : undefined}
         >
           <Text style={Styles.formButton.text}>{this.props.text}</Text>
         </FontAwesome.Button>

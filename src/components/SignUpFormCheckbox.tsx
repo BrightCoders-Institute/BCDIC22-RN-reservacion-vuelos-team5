@@ -18,9 +18,12 @@ export default class SignUpFormInputs extends Component<ISignUpFormCheckboxProps
         <View style={Styles.formCheckbox.main}>
           <Checkbox
             color={Styles.formCheckbox.checkbox.color}
-            status={this.props.formikProps.values.agreed ? 'checked' : 'unchecked'}
+            status={this.props.formikProps.values.inputs.agreed.value ? 'checked' : 'unchecked'}
             onPress={() => {
-              this.props.formikProps.setFieldValue('agreed', !this.props.formikProps.values.agreed);
+              this.props.formikProps.setFieldValue(
+                'inputs.agreed.value',
+                !this.props.formikProps.values.inputs.agreed.value
+              );
             }}
           />
           <Text>
@@ -52,9 +55,12 @@ export default class SignUpFormInputs extends Component<ISignUpFormCheckboxProps
         <View style={Styles.formCheckbox.main}>
           <Checkbox
             color={Styles.formCheckbox.checkbox.color}
-            status={this.props.formikProps.values.subscribe ? 'checked' : 'unchecked'}
+            status={this.props.formikProps.values.inputs.subscribe.value ? 'checked' : 'unchecked'}
             onPress={() => {
-              this.props.formikProps.setFieldValue('subscribe', !this.props.formikProps.values.subscribe);
+              this.props.formikProps.setFieldValue(
+                'inputs.subscribe.value',
+                !this.props.formikProps.values.inputs.subscribe.value
+              );
             }}
           />
           <Text>Subscribe for select product updates.</Text>

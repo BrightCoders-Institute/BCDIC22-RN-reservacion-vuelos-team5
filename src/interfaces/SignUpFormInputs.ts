@@ -1,13 +1,5 @@
-// Node modules
-import { FormikProps } from 'formik';
-
+// Interfaces
+import { ISignUpFormikProps } from './SignUp';
 export interface ISignUpFormInputsProps {
-  formikProps: FormikProps<{
-    agreed: boolean;
-    email: string;
-    name: string;
-    password: string;
-    passwordHidden: boolean;
-    subscribe: boolean;
-  }>;
+  formikProps: ISignUpFormikProps;
 }
