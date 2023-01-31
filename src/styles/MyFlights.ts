@@ -16,7 +16,6 @@ export const buttonAdd = StyleSheet.create({
     },
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
-
     elevation: 10,
   },
   addLocation: {
@@ -45,15 +44,12 @@ const cards = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
   },
-
-  Table: {
+  table: {
     justifyContent: 'flex-end',
   },
-
   airplane: {
     position: 'relative',
     alignSelf: 'center',
-    /* right: '50%', */
   },
   textCountry: {
     fontSize: 15,
