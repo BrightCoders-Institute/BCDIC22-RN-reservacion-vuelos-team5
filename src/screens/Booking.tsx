@@ -1,13 +1,13 @@
 // Node modules
 import React, { Component } from 'react';
 import { ScrollView, View } from 'react-native';
-import Constants from 'expo-constants';
 import { Formik } from 'formik';
 // Components
 import BookingCalendar from '../components/BookingCalendar';
-
 // Interfaces
 import { IBookingProps, IBookingState } from '../interfaces/Booking';
+// Styles
+import Styles from '../styles/Booking';
 
 export default class Booking extends Component<IBookingProps, IBookingState> {
   constructor(props: IBookingProps) {
@@ -40,22 +40,20 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
 
   render() {
     return (
-      <View style={{ height: '100%' }}>
-        <ScrollView style={{ marginTop: Constants.statusBarHeight, paddingLeft: 20, paddingRight: 20 }}>
-          <Formik
-            initialValues={this.state}
-            onSubmit={(values) => {
-              console.log(values);
-            }}
-          >
-            {(formikProps) => (
-              <View>
-                <BookingCalendar formikProps={formikProps} />
-              </View>
-            )}
-          </Formik>
-        </ScrollView>
-      </View>
+      <ScrollView testID='screenBooking' style={Styles.screen.main}>
+        <Formik
+          initialValues={this.state}
+          onSubmit={(values, formikHelpers) => {
+            formikHelpers.resetForm();
+          }}
+        >
+          {(formikProps) => (
+            <View>
+              <BookingCalendar formikProps={formikProps} />
+            </View>
+          )}
+        </Formik>
+      </ScrollView>
     );
   }
 }
