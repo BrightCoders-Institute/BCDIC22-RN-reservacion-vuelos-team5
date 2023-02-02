@@ -63,7 +63,6 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
       });
       this.props.navigation.navigate('MyFlights');
     }
-    console.log(this.state.inputs.steps.value);
   };
 
   render() {
