@@ -1,4 +1,7 @@
+import { ComponentProps } from 'react';
 import { StyleSheet } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { TextInput } from 'react-native-paper';
 import Constants from 'expo-constants';
 import moment from 'moment';
 // Constants
@@ -58,6 +61,28 @@ export const calendar = {
   },
 };
 
+export const input = StyleSheet.create({
+  style: {
+    marginVertical: 10,
+    outlineColor: NavigationContainerTheme.colors.primary,
+    mode: 'outlined' as ComponentProps<typeof TextInput>['mode'],
+  },
+  helper: {
+    flexDirection: 'row',
+  },
+  helperIcon: {
+    name: 'alert-circle' as keyof typeof MaterialCommunityIcons.glyphMap,
+    textAlignVertical: 'center',
+    size: 20,
+    color: 'red',
+  },
+  helperText: {
+    color: 'red',
+    textAlignVertical: 'center',
+    flexShrink: 1,
+  },
+});
+
 export const screen = StyleSheet.create({
   main: {
     marginTop: Constants.statusBarHeight,
@@ -92,5 +117,6 @@ export const screen = StyleSheet.create({
 export default {
   button,
   calendar,
+  input,
   screen,
 };

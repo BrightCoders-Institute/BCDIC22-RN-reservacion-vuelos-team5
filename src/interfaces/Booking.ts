@@ -12,7 +12,7 @@ export interface IBookingState {
       value: string;
       error: boolean;
     };
-    destiny: {
+    destination: {
       value: string;
       error: boolean;
     };

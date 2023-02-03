@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 // Components
 import BookingButton from '../components/BookingButton';
 import BookingCalendar from '../components/BookingCalendar';
+import BookingInput from '../components/BookingInput';
 
 // Interfaces
 import { IBookingProps, IBookingState } from '../interfaces/Booking';
@@ -20,7 +21,7 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
           value: '',
           error: false,
         },
-        destiny: {
+        destination: {
           value: '',
           error: false,
         },
@@ -79,8 +80,12 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
             >
               {(formikProps) => (
                 <View>
-                  {this.state.inputs.steps.value === 1 && <Text>Step 1</Text>}
-                  {this.state.inputs.steps.value === 2 && <Text>Step 2</Text>}
+                  {this.state.inputs.steps.value === 1 && (
+                    <BookingInput formikProps={formikProps} type={'origin'} label={'Select location'} />
+                  )}
+                  {this.state.inputs.steps.value === 2 && (
+                    <BookingInput formikProps={formikProps} type={'origin'} label={'Select location'} />
+                  )}
                   {this.state.inputs.steps.value === 3 && <BookingCalendar formikProps={formikProps} />}
                   {this.state.inputs.steps.value === 4 && <Text>Step 4</Text>}
                   <BookingButton
