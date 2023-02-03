@@ -42,7 +42,7 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
   }
 
   onNextStep = async () => {
-    if (this.state.inputs.steps.value < 4) {
+    if (this.state.inputs.steps.value < 5) {
       this.setState({
         inputs: {
           ...this.state.inputs,
@@ -80,21 +80,33 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
             >
               {(formikProps) => (
                 <View>
-                  {this.state.inputs.steps.value === 1 && (
-                    <BookingInput formikProps={formikProps} type={'origin'} label={'Select location'} />
+                  {this.state.inputs.steps.value == 1 && <Text style={Styles.screen.text}>Where are you now?</Text>}
+                  {this.state.inputs.steps.value == 2 && (
+                    <Text style={Styles.screen.text}>Where will you be flying to?</Text>
                   )}
-                  {this.state.inputs.steps.value === 2 && (
-                    <BookingInput formikProps={formikProps} type={'origin'} label={'Select location'} />
+                  {this.state.inputs.steps.value == 3 && <Text style={Styles.screen.text}>Select date</Text>}
+                  {this.state.inputs.steps.value == 4 && <Text style={Styles.screen.text}>How many passangers?</Text>}
+                  {this.state.inputs.steps.value == 5 && (
+                    <Text style={Styles.screen.text}>Your request was received</Text>
                   )}
-                  {this.state.inputs.steps.value === 3 && <BookingCalendar formikProps={formikProps} />}
-                  {this.state.inputs.steps.value === 4 && <Text>Step 4</Text>}
-                  <BookingButton
-                    disabled={false}
-                    text={this.state.inputs.steps.value < 4 ? 'Next' : 'Finish'}
-                    onPress={async () => {
-                      await this.onNextStep();
-                    }}
-                  />
+                  <View>
+                    {this.state.inputs.steps.value === 1 && (
+                      <BookingInput formikProps={formikProps} type={'origin'} label={'Select location'} />
+                    )}
+                    {this.state.inputs.steps.value === 2 && (
+                      <BookingInput formikProps={formikProps} type={'destination'} label={'Select location'} />
+                    )}
+                    {this.state.inputs.steps.value === 3 && <BookingCalendar formikProps={formikProps} />}
+                    {this.state.inputs.steps.value === 4 && <Text>Step 4</Text>}
+                    {this.state.inputs.steps.value === 5 && <Text>Step 5</Text>}
+                    <BookingButton
+                      disabled={false}
+                      text={this.state.inputs.steps.value < 5 ? 'Next' : 'Finish'}
+                      onPress={async () => {
+                        await this.onNextStep();
+                      }}
+                    />
+                  </View>
                 </View>
               )}
             </Formik>

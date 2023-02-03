@@ -112,6 +112,10 @@ export const screen = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 10,
   },
+  text: {
+    fontSize: 35,
+    fontWeight: 'bold',
+  },
 });
 
 export default {
