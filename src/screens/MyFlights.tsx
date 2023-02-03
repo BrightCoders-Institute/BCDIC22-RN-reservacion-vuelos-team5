@@ -23,7 +23,11 @@ export default class LogIn extends Component<IMyFlightsProps> {
         <ScrollView style={Styles.screen.scroll}>
           <MyFlightsCard />
         </ScrollView>
-        <MyFlightsButtonAdd />
+        <MyFlightsButtonAdd
+          onPress={() => {
+            this.props.navigation.navigate('Booking');
+          }}
+        />
       </View>
     );
   }
