@@ -26,6 +26,7 @@ export const button = StyleSheet.create({
     flexDirection: 'row',
     padding: 10,
     borderRadius: 10,
+    justifyContent: 'center',
     backgroundColor: '#B6B7BA',
   },
 });
@@ -86,9 +87,11 @@ export const input = StyleSheet.create({
 export const screen = StyleSheet.create({
   main: {
     marginTop: Constants.statusBarHeight,
+    flex: 1,
   },
   container: {
     margin: '5%',
+    flex: 1,
   },
   space: {
     marginVertical: 10,
@@ -98,6 +101,14 @@ export const screen = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     marginVertical: 10,
+    flex: 0.1,
+  },
+  stepTitleBox: {
+    flex: 1,
+  },
+  content: {
+    flexDirection: 'column',
+    flex: 0.95,
   },
   textCentered: {
     textAlign: 'center',

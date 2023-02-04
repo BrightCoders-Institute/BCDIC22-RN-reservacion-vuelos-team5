@@ -10,11 +10,11 @@ export interface IBookingState {
   inputs: {
     origin: {
       value: string;
-      error: boolean;
+      error?: boolean;
     };
     destination: {
       value: string;
-      error: boolean;
+      error?: boolean;
     };
     date: {
       value: string;

@@ -33,6 +33,7 @@ export default class BookingCalendar extends Component<IBookingCalendarInputsPro
         )}
         onDayPress={(day) => {
           this.props.formikProps.setFieldValue('inputs.date.value', day.dateString);
+          this.props.formikProps.setFieldValue('inputs.date.error', false);
         }}
       />
     );

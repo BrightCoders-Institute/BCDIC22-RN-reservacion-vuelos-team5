@@ -13,6 +13,15 @@ export default class BookingInput extends Component<IBookingInputProps> {
     super(props);
   }
 
+  onInputChange = async (value: string) => {
+    await this.props.formikProps.handleChange(`inputs.${this.props.type}.value`)(value);
+    if (this.props.formikProps.values.inputs[this.props.type].value == '') {
+      await this.props.formikProps.setFieldValue(`inputs.${this.props.type}.error`, true);
+    } else {
+      await this.props.formikProps.setFieldValue(`inputs.${this.props.type}.error`, false);
+    }
+  };
+
   render() {
     return (
       <View>
@@ -22,7 +31,7 @@ export default class BookingInput extends Component<IBookingInputProps> {
           label={this.props.label}
           mode={Styles.input.style.mode}
           onChangeText={async (text) => {
-            await this.props.formikProps.handleChange(`inputs.${this.props.type}.value`)(text);
+            this.onInputChange(text);
           }}
           error={this.props.formikProps.values.inputs[this.props.type].error}
           value={this.props.formikProps.values.inputs[this.props.type].value}
