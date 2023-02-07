@@ -62,6 +62,47 @@ export const calendar = {
   },
 };
 
+export const cards = StyleSheet.create({
+  header: {
+    borderWidth: 0,
+  },
+  container: {
+    marginTop: 20,
+  },
+  text: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  table: {
+    justifyContent: 'flex-end',
+  },
+  airplane: {
+    position: 'relative',
+    alignSelf: 'center',
+  },
+  textCountry: {
+    fontSize: 15,
+  },
+  textInfo: {
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+  textShort: {
+    fontSize: 25,
+    color: 'black',
+    fontWeight: 'bold',
+  },
+  divider: {
+    backgroundColor: 'black',
+    height: 1,
+  },
+  plane: {
+    color: NavigationContainerTheme.colors.primary,
+  },
+});
+
 export const input = StyleSheet.create({
   style: {
     marginVertical: 10,
@@ -100,15 +141,18 @@ export const screen = StyleSheet.create({
     color: NavigationContainerTheme.colors.primary,
     fontSize: 22,
     fontWeight: 'bold',
+  },
+  header: {
+    color: NavigationContainerTheme.colors.primary,
+    fontSize: 22,
+    fontWeight: 'bold',
     marginVertical: 10,
-    flex: 0.1,
   },
   stepTitleBox: {
     flex: 1,
   },
   content: {
-    flexDirection: 'column',
-    flex: 0.95,
+    flex: 0.98,
   },
   textCentered: {
     textAlign: 'center',
@@ -132,6 +176,7 @@ export const screen = StyleSheet.create({
 export default {
   button,
   calendar,
+  cards,
   input,
   screen,
 };

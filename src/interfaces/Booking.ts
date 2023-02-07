@@ -20,8 +20,8 @@ export interface IBookingState {
       value: string;
       error: boolean;
     };
-    passangers: {
-      value: string | number;
+    passengers: {
+      value?: string | number;
       error: boolean;
     };
     steps: {
