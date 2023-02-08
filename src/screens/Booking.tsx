@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 // Components
 import BookingButton from '../components/BookingButton';
 import BookingCalendar from '../components/BookingCalendar';
+import BookingCard from '../components/BookingCard';
 import BookingInput from '../components/BookingInput';
 
 // Interfaces
@@ -29,8 +30,8 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
           value: '',
           error: true,
         },
-        passangers: {
-          value: 1,
+        passengers: {
+          value: undefined,
           error: false,
         },
         steps: {
@@ -66,7 +67,7 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
     } else if (formikProps.values.inputs.steps.value == 3) {
       return !formikProps.values.inputs.date.error;
     } else if (formikProps.values.inputs.steps.value == 4) {
-      return !formikProps.values.inputs.passangers.error;
+      return !formikProps.values.inputs.passengers.error;
     } else {
       return true;
     }
@@ -75,15 +76,18 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
   render() {
     return (
       <View testID='screenBooking' style={Styles.screen.main}>
-        <View style={Styles.screen.container}>
-          <Text style={Styles.screen.title}>Booking</Text>
-          <Formik
-            initialValues={this.state}
-            onSubmit={(values, formikHelpers) => {
-              formikHelpers.resetForm();
-            }}
-          >
-            {(formikProps) => (
+        <Formik
+          initialValues={this.state}
+          onSubmit={(values, formikHelpers) => {
+            formikHelpers.resetForm();
+          }}
+        >
+          {(formikProps) => (
+            <View style={Styles.screen.container}>
+              <View style={Styles.screen.header}>
+                <Text style={Styles.screen.title}>Booking</Text>
+                <BookingCard formikProps={formikProps} />
+              </View>
               <View style={Styles.screen.content}>
                 <View style={Styles.screen.stepTitleBox}>
                   {this.state.inputs.steps.value == 1 && <Text style={Styles.screen.text}>Where are you now?</Text>}
@@ -116,9 +120,9 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
                   />
                 </View>
               </View>
-            )}
-          </Formik>
-        </View>
+            </View>
+          )}
+        </Formik>
       </View>
     );
   }
