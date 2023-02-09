@@ -54,7 +54,7 @@ export default class MyFlightsCardFlight extends Component<IBookingCardFlightPro
             </DataTable.Cell>
             <DataTable.Cell textStyle={Styles.cards.textInfo} style={Styles.cards.table}>
               {this.props.formikProps.values.inputs.passengers.value &&
-                this.props.formikProps.values.inputs.passengers.value > 4 &&
+                this.props.formikProps.values.inputs.steps.value > 4 &&
                 `${this.props.formikProps.values.inputs.passengers.value} passengers`}
             </DataTable.Cell>
           </DataTable.Header>

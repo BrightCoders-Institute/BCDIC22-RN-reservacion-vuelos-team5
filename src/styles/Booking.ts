@@ -143,8 +143,6 @@ export const screen = StyleSheet.create({
     fontWeight: 'bold',
   },
   header: {
-    color: NavigationContainerTheme.colors.primary,
-    fontSize: 22,
     fontWeight: 'bold',
     marginVertical: 10,
   },

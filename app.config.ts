@@ -21,7 +21,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     // googleServicesFile: './GoogleService-Info.plist',
     supportsTablet: true,
-    bundleIdentifier: 'com.brightcoders.reservacion_vuelos_team5',
+    // bundleIdentifier: 'com.brightcoders.reservacion_vuelos_team5',
   },
   android: {
     googleServicesFile: process.env.GOOGLE_SERVICES_JSON,

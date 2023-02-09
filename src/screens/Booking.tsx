@@ -7,6 +7,7 @@ import BookingButton from '../components/BookingButton';
 import BookingCalendar from '../components/BookingCalendar';
 import BookingCard from '../components/BookingCard';
 import BookingInput from '../components/BookingInput';
+import BookingPicker from '../components/BookingPicker';
 
 // Interfaces
 import { IBookingFormikProps, IBookingProps, IBookingState } from '../interfaces/Booking';
@@ -107,7 +108,7 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
                       <BookingInput formikProps={formikProps} type={'destination'} label={'Select location'} />
                     )}
                     {this.state.inputs.steps.value === 3 && <BookingCalendar formikProps={formikProps} />}
-                    {this.state.inputs.steps.value === 4 && <Text>Step 4</Text>}
+                    {this.state.inputs.steps.value === 4 && <BookingPicker formikProps={formikProps} />}
                   </ScrollView>
                 </View>
                 <View>
