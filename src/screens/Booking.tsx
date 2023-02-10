@@ -2,15 +2,17 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { Formik } from 'formik';
+import firestore from '@react-native-firebase/firestore';
 // Components
 import BookingButton from '../components/BookingButton';
 import BookingCalendar from '../components/BookingCalendar';
 import BookingCard from '../components/BookingCard';
 import BookingInput from '../components/BookingInput';
 import BookingPicker from '../components/BookingPicker';
-
 // Interfaces
 import { IBookingFormikProps, IBookingProps, IBookingState } from '../interfaces/Booking';
+// Firebase
+import { auth } from '../firebase/firebaseConfig';
 // Styles
 import Styles from '../styles/Booking';
 
@@ -43,10 +45,20 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
     };
   }
 
+  saveFlight = async (formikProps: IBookingFormikProps) => {
+    firestore().collection('users').doc(auth().currentUser?.uid).collection('flights').add({
+      origin: formikProps.values.inputs.origin.value,
+      destination: formikProps.values.inputs.destination.value,
+      date: formikProps.values.inputs.date.value,
+      passengers: formikProps.values.inputs.passengers.value,
+    });
+  };
+
   onNextStep = async (formikProps: IBookingFormikProps) => {
     if (this.state.inputs.steps.value < 5) {
       formikProps.setFieldValue('inputs.steps.value', (formikProps.values.inputs.steps.value += 1));
     } else {
+      await this.saveFlight(formikProps);
       formikProps.setFieldValue('inputs.steps.value', 1);
       this.props.navigation.navigate('MyFlights');
     }
