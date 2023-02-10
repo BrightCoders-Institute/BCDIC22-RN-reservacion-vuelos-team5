@@ -1,12 +1,8 @@
 // Node modules
 import React, { Component } from 'react';
-
 import WheelPicker from 'react-native-wheely';
-
 // Interfaces
 import { IBookingPickerProps, IBookingPickerState } from '../interfaces/BookingPicker';
-// Styles
-import Styles from '../styles/Booking';
 
 export default class BookingPicker extends Component<IBookingPickerProps, IBookingPickerState> {
   constructor(props: IBookingPickerProps) {
