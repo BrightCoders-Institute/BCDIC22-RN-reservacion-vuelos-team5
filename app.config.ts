@@ -24,7 +24,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     // bundleIdentifier: 'com.brightcoders.reservacion_vuelos_team5',
   },
   android: {
-    googleServicesFile: process.env.GOOGLE_SERVICES_JSON,
+    googleServicesFile: process.env.GOOGLE_SERVICES_JSON || process.env.GOOGLE_SERVICES_JSON_PATH,
     adaptiveIcon: {
       foregroundImage: './src/assets/adaptive-icon.png',
       backgroundColor: '#FFFFFF',

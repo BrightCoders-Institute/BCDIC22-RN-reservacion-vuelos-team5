@@ -125,51 +125,64 @@ export const input = StyleSheet.create({
   },
 });
 
-export const screen = StyleSheet.create({
-  main: {
-    marginTop: Constants.statusBarHeight,
-    flex: 1,
+export const screen = {
+  style: StyleSheet.create({
+    main: {
+      marginTop: Constants.statusBarHeight,
+      flex: 1,
+    },
+    container: {
+      margin: '5%',
+      flex: 1,
+    },
+    space: {
+      marginVertical: 10,
+    },
+    title: {
+      color: NavigationContainerTheme.colors.primary,
+      fontSize: 22,
+      fontWeight: 'bold',
+    },
+    header: {
+      fontWeight: 'bold',
+      marginVertical: 10,
+    },
+    stepTitleBox: {
+      flex: 1,
+    },
+    content: {
+      flex: 0.98,
+    },
+    textCentered: {
+      textAlign: 'center',
+    },
+    textLink: {
+      textDecorationLine: 'underline',
+    },
+    textLinkColor: {
+      color: NavigationContainerTheme.colors.primary,
+    },
+    textSeparator: {
+      textAlign: 'center',
+      marginVertical: 10,
+    },
+    text: {
+      fontSize: 35,
+      fontWeight: 'bold',
+    },
+  }),
+  goBackArrow: {
+    style: StyleSheet.create({
+      text: {
+        textAlignVertical: 'center',
+      },
+    }),
+    icon: {
+      size: 25,
+      color: NavigationContainerTheme.colors.primary,
+    },
   },
-  container: {
-    margin: '5%',
-    flex: 1,
-  },
-  space: {
-    marginVertical: 10,
-  },
-  title: {
-    color: NavigationContainerTheme.colors.primary,
-    fontSize: 22,
-    fontWeight: 'bold',
-  },
-  header: {
-    fontWeight: 'bold',
-    marginVertical: 10,
-  },
-  stepTitleBox: {
-    flex: 1,
-  },
-  content: {
-    flex: 0.98,
-  },
-  textCentered: {
-    textAlign: 'center',
-  },
-  textLink: {
-    textDecorationLine: 'underline',
-  },
-  textLinkColor: {
-    color: NavigationContainerTheme.colors.primary,
-  },
-  textSeparator: {
-    textAlign: 'center',
-    marginVertical: 10,
-  },
-  text: {
-    fontSize: 35,
-    fontWeight: 'bold',
-  },
-});
+};
 
 export default {
   button,

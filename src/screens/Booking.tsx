@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { Formik } from 'formik';
+import { AntDesign } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
 // Components
 import BookingButton from '../components/BookingButton';
@@ -64,6 +65,15 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
     }
   };
 
+  onPreviousStep = async (formikProps: IBookingFormikProps) => {
+    if (this.state.inputs.steps.value > 1) {
+      formikProps.setFieldValue('inputs.steps.value', (formikProps.values.inputs.steps.value -= 1));
+    } else {
+      formikProps.setFieldValue('inputs.steps.value', 1);
+      this.props.navigation.navigate('MyFlights');
+    }
+  };
+
   isCurrentStepValid = (formikProps: IBookingFormikProps) => {
     if (formikProps.values.inputs.steps.value == 1) {
       if (formikProps.values.inputs.origin.error !== undefined) {
@@ -88,7 +98,7 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
 
   render() {
     return (
-      <View testID='screenBooking' style={Styles.screen.main}>
+      <View testID='screenBooking' style={Styles.screen.style.main}>
         <Formik
           initialValues={this.state}
           onSubmit={(values, formikHelpers) => {
@@ -96,21 +106,36 @@ export default class Booking extends Component<IBookingProps, IBookingState> {
           }}
         >
           {(formikProps) => (
-            <View style={Styles.screen.container}>
-              <View style={Styles.screen.header}>
-                <Text style={Styles.screen.title}>Booking</Text>
+            <View style={Styles.screen.style.container}>
+              <View style={Styles.screen.style.header}>
+                <View style={{ flexDirection: 'row' }}>
+                  <AntDesign
+                    name={'left'}
+                    size={Styles.screen.goBackArrow.icon.size}
+                    color={Styles.screen.goBackArrow.icon.color}
+                    style={Styles.screen.goBackArrow.style.text}
+                    onPress={async () => {
+                      this.onPreviousStep(formikProps);
+                    }}
+                  />
+                  <Text style={Styles.screen.style.title}>Booking</Text>
+                </View>
                 <BookingCard formikProps={formikProps} />
               </View>
-              <View style={Styles.screen.content}>
-                <View style={Styles.screen.stepTitleBox}>
-                  {this.state.inputs.steps.value == 1 && <Text style={Styles.screen.text}>Where are you now?</Text>}
-                  {this.state.inputs.steps.value == 2 && (
-                    <Text style={Styles.screen.text}>Where will you be flying to?</Text>
+              <View style={Styles.screen.style.content}>
+                <View style={Styles.screen.style.stepTitleBox}>
+                  {this.state.inputs.steps.value == 1 && (
+                    <Text style={Styles.screen.style.text}>Where are you now?</Text>
                   )}
-                  {this.state.inputs.steps.value == 3 && <Text style={Styles.screen.text}>Select date</Text>}
-                  {this.state.inputs.steps.value == 4 && <Text style={Styles.screen.text}>How many passangers?</Text>}
+                  {this.state.inputs.steps.value == 2 && (
+                    <Text style={Styles.screen.style.text}>Where will you be flying to?</Text>
+                  )}
+                  {this.state.inputs.steps.value == 3 && <Text style={Styles.screen.style.text}>Select date</Text>}
+                  {this.state.inputs.steps.value == 4 && (
+                    <Text style={Styles.screen.style.text}>How many passangers?</Text>
+                  )}
                   {this.state.inputs.steps.value == 5 && (
-                    <Text style={Styles.screen.text}>Your request was received</Text>
+                    <Text style={Styles.screen.style.text}>Your request was received</Text>
                   )}
                   <ScrollView>
                     {this.state.inputs.steps.value === 1 && (

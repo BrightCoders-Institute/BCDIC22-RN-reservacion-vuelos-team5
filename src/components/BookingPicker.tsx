@@ -13,6 +13,10 @@ export default class BookingPicker extends Component<IBookingPickerProps, IBooki
     };
   }
 
+  componentDidMount() {
+    this.props.formikProps.setFieldValue('inputs.passengers.value', this.state.options[this.state.selected]);
+  }
+
   render() {
     return (
       <WheelPicker
